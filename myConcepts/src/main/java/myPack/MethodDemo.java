@@ -5,6 +5,7 @@ public class MethodDemo {
 	public static void main(String[] args) {
 		String[] messages = {"HEllo", "My", "Name", "Is: "};
 		displayMessage(messages);
+		System.out.println(15 + 5);
 
 	}
 
