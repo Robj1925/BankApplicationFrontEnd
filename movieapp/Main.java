@@ -18,6 +18,7 @@ public class Main { //hoisting
 	static int idIncrementor = 1;//2
 	static List<Viewer> viewers = new ArrayList<>();
 	static List<Movie> movies = new ArrayList<>();
+	public static int totalMovies; //Im aware this is repetitive but im doing it for the sake of using static demo
 	
 	
 	public static void main(String[] args) {
@@ -52,8 +53,10 @@ public class Main { //hoisting
 	}
 
 	private static void viewerHome() {
-		// TODO Auto-generated method stub
-		
+		while (true) {
+			
+		}
+		System.out.println("---Welcome Viewer, Please Select An Option---");		
 	}
 
 	private static void adminHome() {
