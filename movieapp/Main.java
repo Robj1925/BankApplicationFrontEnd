@@ -53,10 +53,18 @@ public class Main { //hoisting
 	}
 
 	private static void viewerHome() {
-		while (true) {
+
+		do {
+			System.out.println("---Welcome Viewer, Please Select An Option---");	
+			int counter = 0;
+			String choice = scanner.nextLine();
+			for (Movie movie : movies) {
+				System.out.println("[" + counter + "]" + movie.name );
+			}
+
+
+		} while (true); 
 			
-		}
-		System.out.println("---Welcome Viewer, Please Select An Option---");		
 	}
 
 	private static void adminHome() {
@@ -169,5 +177,12 @@ class Movie{
 		return "id: " + this.id + ", name: " + this.name + ", rating:" + this.rating ;
 	}
 	
+}
+class ChildrenMovie extends Movie {
+
+	public ChildrenMovie(String name, int rating) {
+		super(name, rating);
+	}
+
 }
 
