@@ -13,4 +13,11 @@ public class Basket {
 		return books;
 	}
 
+
+	public List<Book> addBook(Book book) {
+		// TODO Auto-generated method stub
+		books.add(book);
+		return books;
+	}
+
 }
