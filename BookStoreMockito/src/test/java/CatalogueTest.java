@@ -83,6 +83,39 @@ class CatalogueTest {
 		
 		verify(writeItemCommandMock, times(books.size())).insertItem(any(Book.class));
 		
+	}
+	
+	@Test
+	public void getBook_CallsGetItemWithISBNPassedInReturnsBook() {
+		Book b = new Book("123");
+		when(readItemCommandMock.getItem("123")).thenReturn(b);
 		
+		Book expected = catalogue.getBook("123");
+		
+		verify(readItemCommandMock, times(1)).getItem("123");
+		
+		assertEquals(b, expected);
+		
+	}
+	
+	@Test
+	public void deleteBook_TakesBook_PassesItToDeleteItem() {
+		Book b = new Book("123");
+		
+		catalogue.deleteBook(b);
+		
+		verify(writeItemCommandMock, times(1)).deleteItem(b);
+	}
+	
+	@Test
+	public void deleteAllBooks_CallsReadAllAndDeleteItemForEachBook() {
+		Book b = new Book();
+		Book b2 = new Book();
+        List<Book> books = new ArrayList<>();
+        books.add(b2);
+        books.add(b);
+        when(readItemCommandMock.readAll()).thenReturn(books);
+        catalogue.deleteAllBooks();
+        verify(writeItemCommandMock, times(books.size())).deleteItem(any(Book.class));
 	}
 }

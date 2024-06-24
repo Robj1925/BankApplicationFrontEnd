@@ -43,5 +43,17 @@ public class Catalogue {
 			writeItemCommand.insertItem(b);
 		}
 	}
+	public Book getBook(String ISBN) {
+		return readItemCommand.getItem(ISBN);
+	}
+	
+	public void deleteBook(Book book) {
+		writeItemCommand.deleteItem(book);
+	}
+	public void deleteAllBooks() {
+		for (Book b : readItemCommand.readAll()) {
+			writeItemCommand.deleteItem(b);
+		}
+	}
 
 }
