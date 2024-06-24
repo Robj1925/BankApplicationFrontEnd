@@ -70,5 +70,12 @@ public class CollectionsDemo {
 		return list;
 		
 	}
+	public static Set<String> tokenizeSentence(String sentence) {
+		Set<String> setWords = new TreeSet<>();
+		for (String word : sentence.split(" ")) {
+			setWords.add(word);
+		}
+		return setWords;
+	}
 
 }
