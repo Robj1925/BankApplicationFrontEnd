@@ -7,6 +7,9 @@ import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 public class Runner {
 
 	public static void main(String[] args) {
@@ -18,6 +21,7 @@ public class Runner {
         BankAccount account6 = new BankAccount(38776543, 946284, "Ms F Davies", "current/checking", 0.2, -503.47);
         BankAccount account7 = new BankAccount(87609802, 987654, "Mr B Wilson", "savings", 1.1, 2.5);
         BankAccount account8 = new BankAccount(56483769, 234567, "Dr E Evans", "current/checking", 0.2, -947.72);
+        Logger myLogger = LogManager.getLogger(Runner.class);
         List<BankAccount> accounts = new ArrayList<>(Arrays.asList(account1, account2, account3, account4, account5, account6, account7, account8));
         
         long count = accounts.stream().filter(account -> account.getAccountType().equals("current/checking")).count();
@@ -67,6 +71,7 @@ public class Runner {
         System.out.println("Bank account with highest balance: " + bAWithHighestBalance);
         BankAccount bAWithLowestBalanceWithBankCode987654 = accounts.stream().filter(account -> account.getBankCode() == 987654).reduce(account1, (a, b) -> a.getBalance() < b.getBalance() ? a : b);
         System.out.println("Bank account with lowest balance that has bank code 987654: " + bAWithLowestBalanceWithBankCode987654);
+        myLogger.info("TESTING!!!");
 
         
         
