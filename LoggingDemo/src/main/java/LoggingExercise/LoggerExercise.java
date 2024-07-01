@@ -15,9 +15,9 @@ public class LoggerExercise {
 
 	public double returnTaxableRate(String salaryString) throws NotANumberException {
 		int num;
+		
 		if (salaryString.matches("\\d+")) {
 			num = Integer.parseInt(salaryString);
-			
 		} else {
 			logger.fatal("Passed in String must be a number: " + salaryString);
 			throw new NotANumberException("Needs to be a number");
@@ -26,6 +26,7 @@ public class LoggerExercise {
 		if (Integer.parseInt(salaryString) < 0) {
 			logger.error("Number cannot be zero: " + salaryString);
 		} 
+		
 		if (Integer.parseInt(salaryString) == 0) {
 			logger.error("Number cannot be zero: " + salaryString);
 		} 
