@@ -71,7 +71,8 @@ public class Runner {
         System.out.println("Bank account with highest balance: " + bAWithHighestBalance);
         BankAccount bAWithLowestBalanceWithBankCode987654 = accounts.stream().filter(account -> account.getBankCode() == 987654).reduce(account1, (a, b) -> a.getBalance() < b.getBalance() ? a : b);
         System.out.println("Bank account with lowest balance that has bank code 987654: " + bAWithLowestBalanceWithBankCode987654);
-        myLogger.info("TESTING!!!");
+       // myLogger.info("TESTING!!!");
+        
 
         
         
