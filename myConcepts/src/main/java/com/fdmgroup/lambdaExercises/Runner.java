@@ -1,7 +1,10 @@
 package com.fdmgroup.lambdaExercises;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
@@ -82,6 +85,78 @@ public class Runner {
 		
 		//Problem 2
 		accounts.forEach(account -> System.out.println(account.getAccountNumber() + " : " + account.getAccountHolder() + " : " + account.getAccountType() + " : " + account.getBalance()));
+		
+		//problem 3
+		accounts.forEach(account -> account.setBalance(account.getBalance() - 10));
+		accounts.forEach(account -> System.out.println(account.getAccountNumber() + " : " + account.getAccountHolder() + " : " + account.getAccountType() + " : " + account.getBalance()));
+
+		//problem 4
+		accounts.removeIf(account -> account.getBalance() < 0);
+		accounts.forEach(account -> System.out.println(account.getAccountNumber() + " : " + account.getAccountHolder() + " : " + account.getAccountType() + " : " + account.getBalance()));
+
+		//problem 5
+		accounts.removeIf(account -> account.getAccountType().equals("savings"));
+		
+		// 1.4 writing lambdas for Comparators
+		System.out.println("------1.4 Writing lambdas for Comparators-----------");
+		accounts.removeAll(accounts);
+		accounts.add(account1);
+		accounts.add(account2);
+		accounts.add(account3);
+		accounts.add(account4);
+		accounts.add(account5);
+		accounts.add(account6);
+		accounts.add(account7);
+		accounts.add(account8);
+		
+		
+		//problem 1
+		Collections.sort(accounts, (acc1, acc2) -> Double.compare(acc1.getBalance(), acc2.getBalance()));
+		accounts.forEach(account -> logger.info(account.getAccountNumber() + " : " + account.getAccountHolder() + " : " + account.getAccountType() + " : " + account.getBalance()));
+		
+		//problem 2
+		Collections.sort(accounts, (acc1, acc2) -> acc1.getAccountType().compareTo(acc2.getAccountType()));
+		accounts.forEach(account -> logger.info(account.getAccountNumber() + " : " + account.getAccountHolder() + " : " + account.getAccountType() + " : " + account.getBalance()));
+
+		//problem 3
+		Collections.sort(accounts, (acc1, acc2) -> Integer.compare(acc1.getAccountNumber(), acc2.getAccountNumber()));
+		accounts.forEach(account -> logger.info(account.getAccountNumber() + " : " + account.getAccountHolder() + " : " + account.getAccountType() + " : " + account.getBalance()));
+
+		
+		//problem 4
+		Collections.sort(accounts, (acc1, acc2) -> {
+			int result = acc1.getAccountType().compareTo(acc2.getAccountType());
+			if (result == 0) {
+				return Double.compare(acc1.getBalance(), acc2.getBalance());
+			}
+			return result;
+		});
+		accounts.forEach(account -> logger.info(account.getAccountNumber() + " : " + account.getAccountHolder() + " : " + account.getAccountType() + " : " + account.getBalance()));
+		
+		logger.info("----1.5 writing lambdas for Map.merg()-----");
+		
+		//problem 1
+		HashMap<Integer, Integer> hm = new HashMap<>();
+		
+		//problem 2
+		for (BankAccount acc : accounts) {
+			hm.merge(acc.getBankCode(), 1, (old, newer) -> old + newer);
+		}
+		
+		hm.forEach((k, v) -> logger.info(k + " :  " + v));
+		
+		//problem 3
+		Map<Integer, Double> sumOfAccsPerBankCode = new HashMap<>();
+		
+		//problem 4
+		for (BankAccount acc : accounts) {
+			sumOfAccsPerBankCode.merge(acc.getBankCode(), acc.getBalance(), (old, newer) -> old + newer);
+		}
+		sumOfAccsPerBankCode.forEach((k, v) -> logger.info("Bank code: " + k + ", balance: " + v));
+		
+		
+		
+
 		
 		
 
