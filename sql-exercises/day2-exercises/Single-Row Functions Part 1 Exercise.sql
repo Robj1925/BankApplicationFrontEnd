@@ -67,7 +67,7 @@ SELECT street_address, SUBSTR(street_address, INSTR(street_address, ' '), LENGTH
 		dollar sign followed by the salary with commas and two places past the decimal point. 
 		Label the column Salary. */ 
         
-SELECT first_name, last_name, CONCAT('$', salary) as Salary, manager_id FROM consultants;
+SELECT first_name, last_name, FORMAT(CONCAT('$', salary), 2) as Salary, manager_id FROM consultants;
 
 /* 11) Select department id, department name, manager id, and location id of all departments
 		in the departments table. If the department has no manager, use Empty Department as the 
