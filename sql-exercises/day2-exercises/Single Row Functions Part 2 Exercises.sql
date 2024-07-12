@@ -39,7 +39,7 @@ ORDER BY DAYOFWEEK(hire_date)
         Lastly, display the sales amount.       */
         
        
-	   
+	   SELECT sales_id, sales_rep_id, sales_timestamp, DATE(sales_timestamp) AS Sales_Date, TIME(sales_timestamp) AS  Sales_Time, sales_amt FROM sales 
         
         
 	/* 6) Display the last_name, hire_date, and the number of weeks each employee has worked
@@ -49,24 +49,32 @@ ORDER BY DAYOFWEEK(hire_date)
       
       
 	  
-	  
+	  SELECT last_name, hire_date, 
+      ROUND(DATEDIFF(CURDATE(), hire_date) / 7) AS Tenure 
+      FROM employees 
+      WHERE department_id = 90 
+      ORDER BY Tenure DESC;
 	  
 	  
 		
 /* 7) Rewrite your answer to question 6 using TIMESTAMPDIFF(). There is no need to use TRUNCATE()
 		as TIMESTAMPDIFF() only returns integers.  */
         
-        
-		
-		
-		
-		
-        
+   SELECT last_name, hire_date, TIMESTAMPDIFF(WEEK, CURDATE(), hire_date) * -1 AS Tenure 
+   FROM employees 
+   WHERE department_id = 90 
+   ORDER BY Tenure DESC;     
+		       
 /* 8) Show last name, manager, job, hire date, and the date
         benefits began. Benefits begin on the first day of the month after hire. 
         Label the column Benefits_Start. */ 
         
-        
+    SELECT last_name,
+     manager_id,
+      job_id,
+       hire_date,
+        DATE_SUB(DATE_ADD(hire_date, INTERVAL  1 MONTH ), INTERVAL DAY(hire_date) - 1  DAY) AS Benefits_Start 
+    FROM employees    
 		
 		
 		
