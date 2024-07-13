@@ -83,7 +83,9 @@ ORDER BY DAYOFWEEK(hire_date)
 			Job id, hire_date, and manager id.  */
             
             
-			
+			SELECT first_name, last_name, job_id, hire_date, manager_id
+FROM employees
+WHERE QUARTER(hire_date) = 3;
 			
 
 /* 10)	For each consultant, show the first and last names, salary, manager id, and the manager's last name.
@@ -98,6 +100,17 @@ ORDER BY DAYOFWEEK(hire_date)
         anything else					Other
         Label the column Manager. */
         
-        
-			
+        	SELECT c.first_name, c.last_name, c.salary, c.manager_id, 
+    CASE
+        WHEN c.manager_id = 145 THEN 'Russell'
+        WHEN c.manager_id = 146 THEN 'Partners'
+        WHEN c.manager_id = 147 THEN 'Errazuriz'
+        WHEN c.manager_id = 148 THEN 'Cambrault'
+        WHEN c.manager_id = 149 THEN 'Zlotkey'
+        ELSE 'Other'
+    END AS manager_name
+FROM consultants c
+INNER JOIN employees e
+ON c.manager_id = e.employee_id;
+
 			
