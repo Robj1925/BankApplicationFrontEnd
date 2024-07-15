@@ -1,0 +1,26 @@
+package com.fdmgroup.spring_demo.contact;
+
+import java.util.Optional;
+
+//Service is a class that provides some functionality or values to the application
+
+public class ContactService {
+	private ContactRepository contactRepo;
+
+	public ContactService(ContactRepository contactRepo) {
+		super();
+		this.contactRepo = contactRepo;
+	}
+
+	public Optional<Contact> createContact(Contact contact) {
+		Optional<Contact> contactOpt = Optional.empty();
+		if (!contactRepo.existsById(contact.getId())) {
+			contactOpt = Optional.of(contactRepo.save(contact));
+		}
+		
+		return contactOpt;
+	}
+	public Optional<Contact> readContactById(long id) {
+		return contactRepo.findById(id);
+	}
+}
