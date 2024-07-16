@@ -2,8 +2,10 @@ package com.fdmgroup.spring_demo.contact;
 
 import java.util.Optional;
 
-//Service is a class that provides some functionality or values to the application
+import org.springframework.stereotype.Service;
 
+//Service is a class that provides some functionality or values to the application
+@Service
 public class ContactService {
 	private ContactRepository contactRepo;
 

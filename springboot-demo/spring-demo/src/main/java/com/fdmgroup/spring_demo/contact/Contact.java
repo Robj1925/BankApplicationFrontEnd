@@ -3,6 +3,11 @@ package com.fdmgroup.spring_demo.contact;
 import java.util.List;
 import java.util.Objects;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
 public class Contact {
 	private long id;
 	private String name;
@@ -64,6 +69,11 @@ public class Contact {
 			return false;
 		Contact other = (Contact) obj;
 		return id == other.id && Objects.equals(info, other.info) && Objects.equals(name, other.name);
+	}
+
+	@Override
+	public String toString() {
+		return "Contact [id=" + id + ", name=" + name + ", info=" + info + "]";
 	}
 
 	
