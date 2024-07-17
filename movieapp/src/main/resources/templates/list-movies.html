@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>All Movies</title>
+</head>
+<body>
+
+<div th:each ="movie : ${movies}">
+
+<ul>
+<li th:text = "${movie.id}">
+<li th:text = "${movie.title}">
+<li th:text = "${movie.director}">
+
+</ul>
+
+
+
+</div>
+</body>
+</html>

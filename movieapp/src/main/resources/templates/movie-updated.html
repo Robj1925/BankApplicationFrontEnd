@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit Movie</title>
+</head>
+<body>
+    <h1>Updated Movie</h1>
+	<table>
+	       <tr>
+	           <th>Title</th>
+	           <td th:text="${movie.title}">Title</td>
+	       </tr>
+	       <tr>
+	           <th>Director</th>
+	           <td th:text="${movie.director}">Director</td>
+	       </tr>
+	   </table>
+    <a th:href="@{/}">Back to Home Page</a>
+</body>
+</html>
