@@ -53,6 +53,7 @@ public class SpringDemoApplication implements CommandLineRunner {
 		
 		System.out.println(contactService.readAll());
 		System.out.println(contactService.getByName("John Doe"));
+		
 	}
 
 }
