@@ -31,6 +31,7 @@ public class SpringDemoApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		ContactService contactService = ctx.getBean(ContactService.class);
 		List<ContactInfo> johnsContactInfo = new ArrayList<>();
+		
 		Contact cl = new Contact("John Doe", johnsContactInfo);
 		johnsContactInfo.add(new ContactInfo(1L, "+1 234 567 8912", InfoType.CELL_PHONE, cl));
 		Optional<Contact> createdContact = contactService.createContact(cl);
@@ -44,9 +45,14 @@ public class SpringDemoApplication implements CommandLineRunner {
 		List<ContactInfo> fdmUSAInfo = new ArrayList<>();
 		fdmUSAInfo.add(new ContactInfo("14 Wall St", InfoType.ADDRESS, fdmContactUSA));
 		fdmContactUSA.setInfo(fdmUSAInfo);
-		System.out.println(fdmContact);
-
-		System.out.println(fdmContactUSA);
+		List<ContactInfo> secondJohnsContactInfo = new ArrayList<>();
+		Contact c2 = new Contact("John Doe", secondJohnsContactInfo);
+		secondJohnsContactInfo.add(new ContactInfo(2L ,"jdoe@yahoo.net", InfoType.PERSONAL_EMAIL, c2));
+		
+		contactService.createContact(c2);
+		
+		System.out.println(contactService.readAll());
+		System.out.println(contactService.getByName("John Doe"));
 	}
 
 }

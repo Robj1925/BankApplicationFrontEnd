@@ -1,5 +1,6 @@
 package com.fdmgroup.spring_demo.contact;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -24,5 +25,12 @@ public class ContactService {
 	}
 	public Optional<Contact> readContactById(long id) {
 		return contactRepo.findById(id);
+	}
+	public List<Contact> getByName(String name) {
+		return contactRepo.findByName(name);
+	}
+
+	public List<Contact> readAll() {
+		return contactRepo.findAll();
 	}
 }

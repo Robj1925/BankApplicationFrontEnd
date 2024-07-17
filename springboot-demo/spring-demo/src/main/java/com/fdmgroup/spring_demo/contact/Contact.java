@@ -17,7 +17,7 @@ public class Contact {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CONTACT_ID_GEN")
 	private long id;
 	private String name;
-	@OneToMany(mappedBy="contact")
+	@OneToMany(mappedBy="contact", fetch=FetchType.EAGER)
 	private List<ContactInfo> info;
 	
 	public Contact() {
