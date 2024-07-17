@@ -6,11 +6,18 @@ import java.util.Objects;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+
 @Component
 @Scope("prototype")
+@Entity
 public class Contact {
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CONTACT_ID_GEN")
 	private long id;
 	private String name;
+	@OneToMany(mappedBy="contact")
 	private List<ContactInfo> info;
 	
 	public Contact() {

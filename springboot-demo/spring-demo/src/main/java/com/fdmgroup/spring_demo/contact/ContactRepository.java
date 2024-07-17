@@ -1,7 +1,7 @@
 package com.fdmgroup.spring_demo.contact;
 
-import com.fdmgroup.spring_demo.repo.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ContactRepository extends Repository<Contact, Long> {
+public interface ContactRepository extends JpaRepository<Contact, Long> {
 	
 }

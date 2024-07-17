@@ -2,11 +2,21 @@ package com.fdmgroup.spring_demo.contact;
 
 import java.util.Objects;
 
+import jakarta.persistence.*;
+
+@Entity
 public class ContactInfo {
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CONTACT_INFO_GEN")
+	@SequenceGenerator(name="CONTACT_INFO_ID_GEN", sequenceName="CONTACT_INFO_ID_SEQ")
 	private long id;
+	@Column(name="INFO_VALUE")
 	private String value;
 	private InfoType infoType;
+	@ManyToOne
+	@JoinColumn(name = "FK_CONTACT_ID")
 	private Contact contact;
+	
 	public ContactInfo() {
 		super();
 	}

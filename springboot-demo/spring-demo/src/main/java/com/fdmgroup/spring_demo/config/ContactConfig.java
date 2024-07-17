@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import com.fdmgroup.spring_demo.contact.Contact;
-import com.fdmgroup.spring_demo.contact.ContactMapRepository;
 import com.fdmgroup.spring_demo.contact.ContactRepository;
 import com.fdmgroup.spring_demo.contact.ContactService;
 
@@ -17,11 +16,6 @@ public class ContactConfig {
 	@Bean
 	public ContactService contactService(ContactRepository contactRepo) {
 		return new ContactService(contactRepo);
-	}
-
-	@Bean
-	public ContactRepository contactRepo(Map<Long, Contact> contacts) {
-		return new ContactMapRepository(contacts);
 	}
 	@Bean("fdmContact")
 	@Scope("prototype")
