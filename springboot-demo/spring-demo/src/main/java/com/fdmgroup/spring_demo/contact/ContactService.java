@@ -33,4 +33,7 @@ public class ContactService {
 	public List<Contact> readAll() {
 		return contactRepo.findAll();
 	}
+	public List<Contact> searchByContactInfo(String contactInfo) {
+		return contactRepo.searchByContactInfo(contactInfo);
+	}
 }
