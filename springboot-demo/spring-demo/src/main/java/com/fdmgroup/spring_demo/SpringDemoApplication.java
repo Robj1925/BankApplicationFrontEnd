@@ -52,7 +52,26 @@ public class SpringDemoApplication implements CommandLineRunner {
 		contactService.createContact(c2);
 		
 		System.out.println(contactService.readAll());
-		System.out.println(contactService.getByName("John Doe"));
+		List<Contact> contactsNamedJohnDoe = contactService.getByName("John Doe");
+		// System.out.println(contactsNamedJohnDoe);
+		contactsNamedJohnDoe.forEach(c -> System.out.println(c));
+//		
+//		Contact myContact = new Contact();
+//		myContact.setName("Linette");
+//		List<ContactInfo> myContactInfo = new ArrayList<>();
+//		myContactInfo.add(new ContactInfo("+1 123 123 1234", InfoType.HOME_PHONE, myContact));
+//		myContact.setInfo(myContactInfo);	
+//		
+//		contactService.createContact(myContact);
+		
+//		Contact maxContact = new Contact();
+//		maxContact.setName("Max");
+//		List<ContactInfo> maxContactInfo = new ArrayList<>();
+//		maxContactInfo.add(new ContactInfo("+1 123 123 1234", InfoType.HOME_PHONE, maxContact));
+//		maxContact.setInfo(maxContactInfo);
+//		contactService.createContact(maxContact);
+//		
+//		List<Contact> contactsWithSamePhoneNumber = contactService.searchByContactInfo("+1 123 123 1234");
 		
 	}
 

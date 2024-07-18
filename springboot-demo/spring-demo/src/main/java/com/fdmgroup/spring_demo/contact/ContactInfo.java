@@ -7,13 +7,13 @@ import jakarta.persistence.*;
 @Entity
 public class ContactInfo {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CONTACT_ID_GEN")
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="CONTACT_ID_GEN")
 	@SequenceGenerator(name="CONTACT_INFO_ID_GEN", sequenceName="CONTACT_ID_SEQ")
 	private long id;
 	@Column(name="INFO_VALUE")
 	private String value;
 	private InfoType infoType;
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "FK_CONTACT_ID")
 	private Contact contact;
 	

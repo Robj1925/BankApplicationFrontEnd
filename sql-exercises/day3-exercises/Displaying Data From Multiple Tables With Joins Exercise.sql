@@ -6,9 +6,8 @@
 /* 1) Produce a query that shows addresses of all the departments. Show
       department name, location id, street address, city, and state / province. 
       Use NATURAL JOIN to produce your output.*/
-
-
-
+SELECT department_name, location_id, street_address, city, state_province
+FROM departments d NATURAL JOIN locations l 
 /* 2) Produce a report showing employees who work in Toronto. Display first and 
       last name, job, department number, department name, and city. 
       Produce your results with JOIN USING.*/
