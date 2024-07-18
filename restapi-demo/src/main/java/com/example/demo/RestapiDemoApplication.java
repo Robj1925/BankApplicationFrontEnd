@@ -8,6 +8,7 @@ public class RestapiDemoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RestapiDemoApplication.class, args);
+		
 	}
 
 }
