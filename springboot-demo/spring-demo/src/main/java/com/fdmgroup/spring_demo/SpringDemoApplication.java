@@ -30,31 +30,31 @@ public class SpringDemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		ContactService contactService = ctx.getBean(ContactService.class);
-		List<ContactInfo> johnsContactInfo = new ArrayList<>();
-		
-		Contact cl = new Contact("John Doe", johnsContactInfo);
-		johnsContactInfo.add(new ContactInfo(1L, "+1 234 567 8912", InfoType.CELL_PHONE, cl));
-		Optional<Contact> createdContact = contactService.createContact(cl);
-		if (createdContact.isPresent())
-			System.out.println(createdContact.get());
-
-		Contact fdmContact = ctx.getBean("fdmContact", Contact.class);
-
-		Contact fdmContactUSA = ctx.getBean("fdmContact", Contact.class);
-		fdmContactUSA.setName("FDM Group USA");
-		List<ContactInfo> fdmUSAInfo = new ArrayList<>();
-		fdmUSAInfo.add(new ContactInfo("14 Wall St", InfoType.ADDRESS, fdmContactUSA));
-		fdmContactUSA.setInfo(fdmUSAInfo);
-		List<ContactInfo> secondJohnsContactInfo = new ArrayList<>();
-		Contact c2 = new Contact("John Doe", secondJohnsContactInfo);
-		secondJohnsContactInfo.add(new ContactInfo(2L ,"jdoe@yahoo.net", InfoType.PERSONAL_EMAIL, c2));
-		
-		contactService.createContact(c2);
-		
-		System.out.println(contactService.readAll());
-		List<Contact> contactsNamedJohnDoe = contactService.getByName("John Doe");
-		// System.out.println(contactsNamedJohnDoe);
-		contactsNamedJohnDoe.forEach(c -> System.out.println(c));
+//		List<ContactInfo> johnsContactInfo = new ArrayList<>();
+//		
+//		Contact cl = new Contact("John Doe", johnsContactInfo);
+//		johnsContactInfo.add(new ContactInfo(1L, "+1 234 567 8912", InfoType.CELL_PHONE, cl));
+//		Optional<Contact> createdContact = contactService.createContact(cl);
+//		if (createdContact.isPresent())
+//			System.out.println(createdContact.get());
+//
+//		Contact fdmContact = ctx.getBean("fdmContact", Contact.class);
+//
+//		Contact fdmContactUSA = ctx.getBean("fdmContact", Contact.class);
+//		fdmContactUSA.setName("FDM Group USA");
+//		List<ContactInfo> fdmUSAInfo = new ArrayList<>();
+//		fdmUSAInfo.add(new ContactInfo("14 Wall St", InfoType.ADDRESS, fdmContactUSA));
+//		fdmContactUSA.setInfo(fdmUSAInfo);
+//		List<ContactInfo> secondJohnsContactInfo = new ArrayList<>();
+//		Contact c2 = new Contact("John Doe", secondJohnsContactInfo);
+//		secondJohnsContactInfo.add(new ContactInfo(2L ,"jdoe@yahoo.net", InfoType.PERSONAL_EMAIL, c2));
+//		
+//		contactService.createContact(c2);
+//		
+//		System.out.println(contactService.readAll());
+//		List<Contact> contactsNamedJohnDoe = contactService.getByName("John Doe");
+//		// System.out.println(contactsNamedJohnDoe);
+//		contactsNamedJohnDoe.forEach(c -> System.out.println(c));
 //		
 //		Contact myContact = new Contact();
 //		myContact.setName("Linette");
