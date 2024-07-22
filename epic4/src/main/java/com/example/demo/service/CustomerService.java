@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.Customer;
 import com.example.demo.repository.CustomerRepository;
 
+import exception.CustomerNotFoundException;
+
 @Service
 public class CustomerService {
 	
@@ -23,13 +25,14 @@ public class CustomerService {
 	public List<Customer> findAllCustomers() {
 		return customerRepository.findAll();
 	}
-	public Customer findById(long id) {
-		return customerRepository.findById(id).get();
+	public Customer findById(long id) throws CustomerNotFoundException {
+		return customerRepository.findById(id).orElseThrow(() -> new CustomerNotFoundException("Customer with id: " + id + " does not exist!"));
 	}
 	public Customer updateCustomer(Customer customer) {
 		return customerRepository.save(customer);
 	}
-	public void deleteById(long id) {
+	public void deleteById(long id) throws CustomerNotFoundException {
+		findById(id);
 		customerRepository.deleteById(id);
 	}
 

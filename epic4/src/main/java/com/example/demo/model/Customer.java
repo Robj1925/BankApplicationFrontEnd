@@ -14,9 +14,9 @@ public class Customer {
 	private String name;
 	@NotNull
 	private String streetNumber;
-	@NotNull
+//	@NotNull
 	private String city;
-	@NotNull
+	//@NotNull
 	private String providence;
 	@NotNull
 	private String postalCode;
