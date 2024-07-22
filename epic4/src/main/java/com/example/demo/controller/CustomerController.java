@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -42,45 +41,43 @@ public class CustomerController {
 //		super();
 //		this.customerService = customerService;
 //	}
-	
-	
+
 	public CustomerController(CustomerService customerService, RestTemplate restTemplate) {
 		super();
 		this.customerService = customerService;
 		this.restTemplate = restTemplate;
 	}
 
-
 	@PostMapping("/customer")
-	@Operation(summary="Creates new customer")
+	@Operation(summary = "Creates new customer")
 	@ApiResponse(responseCode = "201", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
 	public ResponseEntity<Customer> createCustomer(@Valid @RequestBody Customer customer) {
-		  if (customer.getCity() == null || customer.getProvidence() == null) {
-	            String url = String.format("https://geocoder.ca/?locate=%s&geoit=XML&json=1", customer.getPostalCode());
-	            String response = restTemplate.getForObject(url, String.class);
-	            JSONObject jsonResponse = new JSONObject(response);
-	            JSONObject standard = jsonResponse.getJSONObject("standard");
+		if (customer.getCity() == null || customer.getProvidence() == null) {
+			String url = String.format("https://geocoder.ca/?locate=%s&geoit=XML&json=1", customer.getPostalCode());
+			String response = restTemplate.getForObject(url, String.class);
+			JSONObject jsonResponse = new JSONObject(response);
+			JSONObject standard = jsonResponse.getJSONObject("standard");
 
-	            customer.setCity(standard.getString("city"));
-	            customer.setProvidence(standard.getString("prov"));
-                
+			customer.setCity(standard.getString("city"));
+			customer.setProvidence(standard.getString("prov"));
 
-	            System.out.println(standard);
-	            System.out.println(jsonResponse);
+			System.out.println(standard);
+			System.out.println(jsonResponse);
 
-	        }
+		}
 		Customer createdCustomer = customerService.createCustomer(customer);
 		return ResponseEntity.status(HttpStatus.CREATED).body(createdCustomer);
 	}
-	
+
 	@GetMapping("/customers")
-	@Operation(summary="Retrieve all customers")
+	@Operation(summary = "Retrieve all customers")
 	@ApiResponse(responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
 	public ResponseEntity<List<Customer>> getAllEmployees() {
 		return ResponseEntity.ok(customerService.findAllCustomers());
 	}
+
 	@GetMapping("/customer/{id}")
-	@Operation(summary="Retrieve Customer by ID")
+	@Operation(summary = "Retrieve Customer by ID")
 	@ApiResponse(responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
 	public ResponseEntity<Customer> getCustomerById(@PathVariable long id) {
 		Customer customer = null;
@@ -90,19 +87,21 @@ public class CustomerController {
 			e.printStackTrace();
 			return ResponseEntity.notFound().build();
 		}
-		
+
 		return ResponseEntity.ok(customer);
 	}
+
 	@PutMapping("/customer")
-	@Operation(summary="Update customer information")
-	@ApiResponse(responseCode="200", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
+	@Operation(summary = "Update customer information")
+	@ApiResponse(responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
 	public ResponseEntity<Customer> updateCustomer(@Valid @RequestBody Customer customer) {
 		return ResponseEntity.ok(customerService.updateCustomer(customer));
 	}
+
 	@DeleteMapping("/customer/{id}")
-	@Operation(summary="Delete customer by id")
+	@Operation(summary = "Delete customer by id")
 	public ResponseEntity<Void> deleteCustomerbyId(@PathVariable long id) {
-		
+
 		try {
 			customerService.deleteById(id);
 		} catch (CustomerNotFoundException e) {
@@ -110,6 +109,6 @@ public class CustomerController {
 			e.printStackTrace();
 			return ResponseEntity.notFound().build();
 		}
-		return ResponseEntity.noContent().build(); 
+		return ResponseEntity.noContent().build();
 	}
 }
