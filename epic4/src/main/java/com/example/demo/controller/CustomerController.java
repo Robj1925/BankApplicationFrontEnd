@@ -52,17 +52,18 @@ public class CustomerController {
 	@Operation(summary = "Creates new customer")
 	@ApiResponse(responseCode = "201", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
 	public ResponseEntity<Customer> createCustomer(@Valid @RequestBody Customer customer) {
-		if (customer.getCity() == null || customer.getProvidence() == null) {
-			String url = String.format("https://geocoder.ca/?locate=%s&geoit=XML&json=1", customer.getPostalCode());
+		if (customer.getAddress().getCity() == null || customer.getAddress().getProvidence() == null) {
+			String url = String.format("https://geocoder.ca/?locate=%s&geoit=XML&json=1",
+					customer.getAddress().getPostalCode());
 			String response = restTemplate.getForObject(url, String.class);
 			JSONObject jsonResponse = new JSONObject(response);
 			JSONObject standard = jsonResponse.getJSONObject("standard");
-
-			customer.setCity(standard.getString("city"));
-			customer.setProvidence(standard.getString("prov"));
-
+			System.out.println(customer);
 			System.out.println(standard);
 			System.out.println(jsonResponse);
+
+			customer.getAddress().setCity(standard.getString("city"));
+			customer.getAddress().setProvidence(standard.getString("prov"));
 
 		}
 		Customer createdCustomer = customerService.createCustomer(customer);
