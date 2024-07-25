@@ -48,6 +48,18 @@ public class Address {
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public long getAddressId() {
+		return addressId;
+	}
+
 	public String getCity() {
 		return city;
 	}
