@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.demo.dto.CustomerDto;
+import com.example.demo.exception.CustomerNotFoundException;
 import com.example.demo.model.Company;
 import com.example.demo.model.Customer;
 import com.example.demo.model.Person;
 import com.example.demo.response.GeocoderResponse;
 import com.example.demo.service.CustomerService;
 
-import exception.CustomerNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -38,7 +38,6 @@ import org.json.JSONObject;
 public class CustomerController {
 	private CustomerService customerService;
 	private RestTemplate restTemplate;
-	private String geoCodeAPIBaseURL = "https://geocoder.ca/?addresst=edison+drive&stno=1&city=&prov=ON&postal=08520&geoit=GeoCode+it%21";
 
 	public CustomerController(CustomerService customerService, RestTemplate restTemplate) {
 		super();
@@ -56,7 +55,6 @@ public class CustomerController {
 			String response = restTemplate.getForObject(url, String.class);
 			JSONObject jsonResponse = new JSONObject(response);
 			JSONObject standard = jsonResponse.getJSONObject("standard");
-		//	System.out.println(customer); //customer param has address object in it
 			System.out.println(standard);
 			System.out.println(jsonResponse);
 
@@ -109,7 +107,6 @@ public class CustomerController {
 		try {
 			customerService.deleteById(id);
 		} catch (CustomerNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ResponseEntity.notFound().build();
 		}

@@ -84,4 +84,8 @@ public abstract class Customer {
 		return "Customer [customerId=" + customerId + ", name=" + name + ", address=" + address + "]";
 	}
 
+	public void setId(long l) {
+		this.customerId = l;
+	}
+
 }

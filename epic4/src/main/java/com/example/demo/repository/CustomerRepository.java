@@ -10,6 +10,9 @@ import com.example.demo.model.Customer;
 import com.example.demo.model.Person;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
+	 @Query("SELECT c FROM Customer c WHERE c.address.city = 'Toronto'")
+	 public List<Customer> getAllCustomersInToronto();
+	 
 	@Query("SELECT s FROM Person s")
 	public List<Person> getAllPersons();
 	

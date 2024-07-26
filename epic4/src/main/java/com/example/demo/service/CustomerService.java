@@ -7,13 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.CustomerDto;
+import com.example.demo.exception.CustomerNotFoundException;
 import com.example.demo.model.*;
 import com.example.demo.model.Company;
 import com.example.demo.model.Customer;
 import com.example.demo.model.Person;
 import com.example.demo.repository.CustomerRepository;
-
-import exception.CustomerNotFoundException;
 
 @Service
 public class CustomerService {
@@ -33,6 +32,7 @@ public class CustomerService {
 			customer = new Company(customerDto.getName(), customerDto.getAddress(), new ArrayList<Account>());
 			customer.getAddress().setCustomer(customer);
 		}
+		System.out.println(customer.getClass()); 
 		return customerRepository.save(customer);
 	}
 	public List<Customer> findAllCustomers() {
@@ -62,6 +62,9 @@ public class CustomerService {
 	}
 	public List<Company> getAllCompanies() {
 		return customerRepository.getAllCompanies();
+	}
+	public List<Customer> getAllCustomersInToronto() {
+		return customerRepository.getAllCustomersInToronto();
 	}
 
 }
