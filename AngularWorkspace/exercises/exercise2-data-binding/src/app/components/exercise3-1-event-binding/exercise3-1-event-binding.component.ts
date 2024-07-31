@@ -10,6 +10,7 @@ import { UppercasePipe } from '../../pipes/uppercase.pipe';
   styleUrl: './exercise3-1-event-binding.component.css'
 })
 export class Exercise31EventBindingComponent {
+  input = "why"
   loginOutput = ""
   login(username: string, password: string) {
     console.log("Login method called with", username, password);

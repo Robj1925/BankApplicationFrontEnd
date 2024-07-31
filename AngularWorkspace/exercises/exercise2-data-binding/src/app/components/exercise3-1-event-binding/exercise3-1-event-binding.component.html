@@ -7,6 +7,10 @@
   </div>
 
   <div>
+    <input type="text" class="form-control" placeholder="Test" [(ngModel)]="input" value={{input}} > <p>
+      {{input | uppercase}}
+    </p>
+
     {{"Hello i want to see if it works or not" | uppercase}}
   </div>
   

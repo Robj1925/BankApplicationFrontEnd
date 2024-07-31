@@ -5,6 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true
 })
 export class UppercasePipe implements PipeTransform {
+  
+input: string = ""
 
   transform(text: string, args?: any[]): string {
     return  text.split(' ').map((word: string) => word[0].toUpperCase() + word.substring(1)).join(' ');
