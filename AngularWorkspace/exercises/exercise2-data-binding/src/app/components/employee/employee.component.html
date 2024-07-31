@@ -1,0 +1,19 @@
+<p>employee works!</p>
+<div>
+    <h1>Employees</h1>
+
+    <div *ngIf="!ageIsShown"> 
+        <div *ngFor = "let employee of employees">
+        <li>Name: {{employee.getName()}}</li> 
+        </div>
+        </div>
+
+    <div *ngIf="ageIsShown"> 
+        <div *ngFor = "let employee of employees">
+        <li>Name: {{employee.getName()}} Age: {{employee.getName()}}</li> 
+        </div>
+        </div>
+            <button type="button" class="btn btn-primary" (click)="toggleAge()">Show Age</button>
+
+  </div>
+  
