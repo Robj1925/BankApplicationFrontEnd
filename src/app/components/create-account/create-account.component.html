@@ -1,0 +1,32 @@
+<h1>Create Account</h1>
+<form #accountForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="balance">Balance:</label>
+    <input type="number" id="balance" name="balance" ngModel required>
+  </div>
+
+  <div class="form-group">
+    <label for="accountType">Account Type:</label>
+    <select id="accountType" name="accountType" ngModel required (change)="onAccountTypeChange($event)">
+      <option value="savings">Savings</option>
+      <option value="checking">Checking</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="customerId">Customer ID:</label>
+    <input type="number" id="customerId" name="customerId" ngModel required>
+  </div>
+
+  <div class="form-group" *ngIf="accountType === 'savings'">
+    <label for="interestRate">Interest Rate:</label>
+    <input type="number" id="interestRate" name="interestRate" ngModel required>
+  </div>
+
+  <div class="form-group" *ngIf="accountType === 'checking'">
+    <label for="nextCheckNumber">Next Check Number:</label>
+    <input type="number" id="nextCheckNumber" name="nextCheckNumber" ngModel required>
+  </div>
+
+  <button type="submit" class="custom-button">Create Account</button>
+</form>
