@@ -1,0 +1,46 @@
+.navbar-toolbar {
+    background: linear-gradient(90deg, rgba(72, 187, 255, 1) 0%, rgba(0, 121, 191, 1) 100%) !important;
+    color: white;
+    padding: 0 16px;
+    align-items: center;
+    display: flex;
+  }
+  
+  .toolbar-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: auto;
+  }
+  
+  .navbar-button {
+    background: linear-gradient(90deg, rgba(72, 187, 255, 1) 0%, rgba(0, 121, 191, 1) 100%) !important;
+    border: none !important;
+    color: white !important;
+    padding: 6px 12px !important;
+    border-radius: 25px !important;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1.5;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 4px; 
+  }
+  
+  .navbar-button:hover {
+    background: linear-gradient(90deg, rgba(0, 121, 191, 1) 0%, rgba(72, 187, 255, 1) 100%) !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .navbar-button:active {
+    background: linear-gradient(90deg, rgba(72, 187, 255, 1) 0%, rgba(0, 121, 191, 1) 100%) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(0.98);
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
