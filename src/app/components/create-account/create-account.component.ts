@@ -17,7 +17,7 @@ export class CreateAccountComponent {
     this.accountType = selectElement.value;
   }
 
-  onCreateCustomer(account: { balance: number; accountType: string; customerId: number; interestRate?: number; nextCheckNumber?: number }) {
+  onCreateAccount(account: { balance: number; accountType: string; customerId: number; interestRate?: number; nextCheckNumber?: number }) {
     this.http.post('http://localhost:8084/accounts', account).subscribe((res) => {
       console.table(res);
       alert('Account created successfully!');
