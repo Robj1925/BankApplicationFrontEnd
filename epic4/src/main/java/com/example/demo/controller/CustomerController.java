@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -74,6 +75,7 @@ public class CustomerController {
 	}
 
 	@GetMapping("/customer/{id}")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@Operation(summary = "Retrieve Customer by ID")
 	@ApiResponse(responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
 	public ResponseEntity<Customer> getCustomerById(@PathVariable long id) {

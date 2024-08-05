@@ -1,0 +1,21 @@
+<h1>Find Customer By ID</h1>
+<div class="form-container">
+  <label for="customerId">Customer ID:</label>
+  <input id="customerId" type="text" [(ngModel)]="id">
+  <button type="button" (click)="retrieveCustomerByID()">Search</button>
+</div>
+<div *ngIf="customer" class="customer-details">
+    <h2>Customer Details</h2>
+    <p><strong>ID:</strong> {{ customer.customerId }}</p>
+    <p><strong>Name:</strong> {{ customer.name }}</p>
+    <h3>Address</h3>
+    <p><strong>Street Number:</strong> {{ customer.address.streetNumber }}</p>
+    <p><strong>Postal Code:</strong> {{ customer.address.postalCode }}</p>
+    <p><strong>City:</strong> {{ customer.address.city }}</p>
+    <p><strong>Providence:</strong> {{ customer.address.providence }}</p>
+    <h3>Accounts</h3>
+  <div *ngFor="let account of customer.accounts" class="account-details">
+    <p><strong>Account ID:</strong> {{ account.id }}</p>
+    <p><strong>Balance:</strong> {{ account.balance }}</p>
+  </div>
+  </div>

@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { AccountsdirectoryComponent } from './components/accountsdirectory/accountsdirectory.component';
 import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
+import { FindByIdComponent } from './components/find-by-id/find-by-id.component';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { CreateAccountComponent } from './components/create-account/create-accou
     HomeComponent,
     AccountsdirectoryComponent,
     CreateCustomerComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    FindByIdComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,10 +34,11 @@ import { CreateAccountComponent } from './components/create-account/create-accou
     MatButtonModule,
     MatTableModule,
     MatMenuModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideHttpClient()
   ],
   bootstrap: [AppComponent]
 })
