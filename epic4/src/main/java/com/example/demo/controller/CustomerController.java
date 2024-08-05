@@ -47,6 +47,7 @@ public class CustomerController {
 	}
 
 	@PostMapping("/customer")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@Operation(summary = "Creates new customer")
 	@ApiResponse(responseCode = "201", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
 	public ResponseEntity<Customer> createCustomer(@Valid @RequestBody CustomerDto customerDto) {
@@ -68,6 +69,7 @@ public class CustomerController {
 	}
 
 	@GetMapping("/customers")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@Operation(summary = "Retrieve all customers")
 	@ApiResponse(responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
 	public ResponseEntity<List<Customer>> getAllEmployees() {
@@ -91,6 +93,7 @@ public class CustomerController {
 	}
 
 	@PutMapping("/customer/{id}")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@Operation(summary = "Update customer information")
 	@ApiResponse(responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
 	public ResponseEntity<Customer> updateCustomer(@PathVariable long id, @Valid @RequestBody CustomerDto customerDto) {
@@ -103,6 +106,7 @@ public class CustomerController {
     }
 
 	@DeleteMapping("/customer/{id}")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@Operation(summary = "Delete customer by id")
 	public ResponseEntity<Void> deleteCustomerbyId(@PathVariable long id) {
 
@@ -115,11 +119,13 @@ public class CustomerController {
 		return ResponseEntity.noContent().build();
 	}
 	@GetMapping("/persons")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@Operation(summary = "Gets all the Person type Customers'")
 	public ResponseEntity<List<Person>> getAllPersonCustomers() {
 		return ResponseEntity.ok(customerService.getAllPersons());
 	}
 	@GetMapping("/companies")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@Operation(summary = "Gets all the Company type Customers")
 	public ResponseEntity<List<Company>> getAllCompanyCustoers() {
 		return ResponseEntity.ok(customerService.getAllCompanies());

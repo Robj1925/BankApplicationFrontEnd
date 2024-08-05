@@ -24,6 +24,7 @@ public class AccountController {
 		this.accountService = accountService;
 	}
 	@PostMapping
+	@CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Account> createAccount(@RequestBody AccountDto accountDto) {
         try {
             Account createdAccount = accountService.createAccount(accountDto);
@@ -35,10 +36,12 @@ public class AccountController {
     }
 
     @GetMapping
+	@CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<Account>> getAllAccounts() {
         return ResponseEntity.ok(accountService.findAllAccounts());
     }
     @GetMapping("/by-city-in-toronto")
+	@CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<Account>> getAccountsByCustomersInToronto() {
         List<Account> accounts = accountService.getAllAccountsOfCustomersInToronto();
         return ResponseEntity.ok(accounts);
