@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +20,33 @@ export class CustomerService {
     );
   }
   getCustomerById(id: number): Observable<any> {
-    return this.http.get(`http://localhost:8084/customer/${id}`);
+    return this.http.get(`http://localhost:8084/customer/${id}`)
+      .pipe(
+        catchError((error) => { 
+          console.error('Error occurred:', error); // Logs the error to the console
+          alert('Failed to fetch customer details. Please try again.'); 
+          return error;
+        })
+      );
   }
   getAllCustomers(): Observable<any> {
-    return  this.http.get('http://localhost:8084/customers');
+    return  this.http.get('http://localhost:8084/customers')
+      .pipe(
+        catchError((error) => {
+          console.error("Error occurrred: ", error);
+          alert("Could not retrieve all customers information!");
+          return error;
+        })
+      );
   }
   updateCustomer(updatedCustomer: any): Observable<any> {
-    return this.http.put(`http://localhost:8084/customer/${updatedCustomer.customerId}`, updatedCustomer);
+    return this.http.put(`http://localhost:8084/customer/${updatedCustomer.customerId}`, updatedCustomer)
+      .pipe(
+        catchError((error) => {
+          console.error("Error occurred: ", error);
+          alert("Could update customer!");
+          return error;
+        })
+      )
   }
 }

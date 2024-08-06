@@ -25,9 +25,14 @@ export class HomeComponent implements OnInit {
   }
 
   displayCustomers() {
-    this.customerService.getAllCustomers().subscribe((res: any) => {
-      this.dataSource = res;
-      console.table(this.dataSource);
+    this.customerService.getAllCustomers().subscribe({
+      next: (res) => { //this is for the successful response
+        this.dataSource = res; //sets our table template variable to be a list of all customers
+        console.table(res);
+      },
+      error: (err) => { //this is in case theres an error
+        console.error('Error displaying customers: ', err);
+      }
     });
   }
 
@@ -46,9 +51,15 @@ export class HomeComponent implements OnInit {
 
   updateCustomer(customer: any): void {
     this.customerService.updateCustomer(customer)
-      .subscribe((res) => {
-        console.table(res);
-        this.displayCustomers(); //"refresh" our table after update
+      .subscribe({
+        next: (res) => {
+          console.table(res);
+          this.displayCustomers(); // "refresh" the table after update
+        },
+        error: (err) => {
+          console.error('Error occurred while updating customer:', err);
+          alert('Failed to update customer. Please try again.');
+        }
       });
   }
   deleteCustomer(customer: any): void { //we take in a customer obj
@@ -69,13 +80,13 @@ export class HomeComponent implements OnInit {
       <form [formGroup]="updateForm">
         <div class="form-group">
           <label for="name">Customer Name</label>
-          <input type="text" id="name" formControlName="name" class="form-control">
+          <input type="text" id="name" formControlName="name" class="form-control" readonly>
         </div>
 
         <div formGroupName="address">
           <div class="form-group">
             <label for="streetNumber">Street Number</label>
-            <input type="text" id="streetNumber" formControlName="streetNumber" class="form-control">
+            <input type="text" id="streetNumber" formControlName="streetNumber" class="form-control" readonly>
           </div>
 
           <div class="form-group">
