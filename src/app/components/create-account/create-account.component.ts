@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { CustomerService } from '../../services/customer.service';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-create-account',
@@ -9,19 +11,19 @@ import { Router } from '@angular/router';
 })
 export class CreateAccountComponent {
   accountType: string = 'savings';
-  http: HttpClient = inject(HttpClient);
-  router: Router = inject(Router);
+//  http: HttpClient = inject(HttpClient);
+//  router: Router = inject(Router);
 
+  constructor(private accountService: AccountService, private router: Router ) {
+  }
   onAccountTypeChange(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
     this.accountType = selectElement.value;
   }
 
   onCreateAccount(account: { balance: number; accountType: string; customerId: number; interestRate?: number; nextCheckNumber?: number }) {
-    this.http.post('http://localhost:8084/accounts', account).subscribe((res) => {
-      console.table(res);
-      alert('Account created successfully!');
-      this.router.navigate(['/home']);
-    });
+    this.accountService.post(account);
+   this.router.navigate(['/home']);
+
   }
 }
