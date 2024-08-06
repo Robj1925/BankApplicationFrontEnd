@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './accountsdirectory.component.css'
 })
 export class AccountsdirectoryComponent {
-  displayedColumns: string[] = ["id", "balance", "customerName", "actions"]
+  displayedColumns: string[] = ["id", "balance", "customerName"]
   dataSource = [1, 2, 3];
 }
