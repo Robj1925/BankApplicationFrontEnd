@@ -11,7 +11,7 @@ import { CustomerService } from '../../services/customer.service';
 })
 export class HomeComponent implements OnInit {
   dataSource: any[] = [];
-  http: HttpClient = inject(HttpClient);
+  // http: HttpClient = inject(HttpClient);
   dialog: MatDialog = inject(MatDialog);
   fb: FormBuilder = inject(FormBuilder);
 
@@ -58,15 +58,19 @@ export class HomeComponent implements OnInit {
         },
         error: (err) => {
           console.error('Error occurred while updating customer:', err);
-          alert('Failed to update customer. Please try again.');
         }
       });
   }
   deleteCustomer(customer: any): void { //we take in a customer obj
-    this.http.delete(`http://localhost:8084/customer/${customer.customerId}`) //just use the customerid to delete it
-      .subscribe((res) => {
-        console.table(res);
-        this.displayCustomers(); //"refresh" our table after update
+    this.customerService.deleteCustomer(`http://localhost:8084/customer/${customer.customerId}`) //just use the customerid to delete it
+      .subscribe({
+        next: (res) => {
+          console.table(res);
+          this.displayCustomers(); // "refresh" the table after update
+        },
+        error: (err) => {
+          console.error('Error occurred while deleting customer:', err);
+        }
       });
   }
 }
