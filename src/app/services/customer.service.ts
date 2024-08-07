@@ -44,9 +44,19 @@ export class CustomerService {
       .pipe(
         catchError((error) => {
           console.error("Error occurred: ", error);
-          alert("Could update customer!");
+          alert("Could not update customer!");
           return error;
         })
-      )
+      );
   }
-}
+  deleteCustomer(customer: any): Observable<any> {
+    return this.http.delete(`http://localhost:8084/customer/${customer.customerId}`)
+    .pipe(
+      catchError((error) => {
+        console.error("Error occurred: ", error);
+        alert("Could not delete customer!");
+        return error;
+      })
+    );
+  }
+ }

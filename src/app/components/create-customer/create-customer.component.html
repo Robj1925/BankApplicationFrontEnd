@@ -1,28 +1,77 @@
 <h1 class="header">Create New Customer</h1>
 
-<form #customerForm="ngForm" (ngSubmit)="onCreateCustomer(customerForm.value)">
+<form #customerForm="ngForm" (ngSubmit)="onCreateCustomer(customerForm)" novalidate>
   <div class="form-group">
     <label for="name">Customer Name</label>
-    <input type="text" id="name" name="name" ngModel class="form-control" required>
+    <input 
+      type="text" 
+      id="name" 
+      name="name" 
+      ngModel 
+      class="form-control" 
+      required 
+      #name="ngModel">
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error">
+      <div *ngIf="name.errors?.['required']">Customer Name is required.</div>
+    </div>
   </div>
 
   <div class="form-group">
     <label for="customerType">Customer Type</label>
-    <select id="customerType" name="customerType" ngModel class="form-control" required>
+    <select 
+      id="customerType" 
+      name="customerType" 
+      ngModel 
+      class="form-control" 
+      required 
+      #customerType="ngModel">
+      <option value="">Select a type</option>
       <option value="person">Person</option>
       <option value="company">Company</option>
     </select>
+    <div *ngIf="customerType.invalid && (customerType.dirty || customerType.touched)" class="error">
+      <div *ngIf="customerType.errors?.['required']">Customer Type is required.</div>
+    </div>
   </div>
 
   <div class="form-group">
     <label for="streetNumber">Street Number</label>
-    <input type="text" id="streetNumber" name="streetNumber" ngModel class="form-control" required>
+    <input 
+      type="text" 
+      id="streetNumber" 
+      name="streetNumber" 
+      ngModel 
+      class="form-control" 
+      required 
+      #streetNumber="ngModel">
+    <div *ngIf="streetNumber.invalid && (streetNumber.dirty || streetNumber.touched)" class="error">
+      <div *ngIf="streetNumber.errors?.['required']">Street Number is required.</div>
+    </div>
   </div>
 
   <div class="form-group">
     <label for="postalCode">Postal Code</label>
-    <input type="text" id="postalCode" name="postalCode" ngModel class="form-control" required>
+    <input 
+      type="text" 
+      id="postalCode" 
+      name="postalCode" 
+      ngModel 
+      class="form-control" 
+      required 
+      minlength="5" 
+      maxlength="10" 
+      #postalCode="ngModel">
+    <div *ngIf="postalCode.invalid && (postalCode.dirty || postalCode.touched)" class="error">
+      <div *ngIf="postalCode.errors?.['required']">Postal Code is required.</div>
+      <div *ngIf="postalCode.errors?.['minlength']">Postal Code must be at least 5 characters long.</div>
+      <div *ngIf="postalCode.errors?.['maxlength']">Postal Code cannot exceed 10 characters.</div>
+    </div>
   </div>
 
-  <button type="submit" mat-raised-button color="primary" class="custom-button">Create Customer</button>
+  <button 
+    type="submit" 
+    mat-raised-button 
+    color="primary" 
+    class="custom-button"
+    [disabled]="customerForm.invalid">Create Customer</button>
 </form>
