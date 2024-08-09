@@ -45,7 +45,7 @@ The `UpdateCustomerDialog` component is used within a dialog to update customer 
   - Displays a form for updating customer information.
   - Allows cancellation or submission of updates.
 
-![UpdateCustomerDialog Image](AngularWorkspace/project/BankAccountApplication/src/HomePage-UpdateDialog.png)
+![UpdateCustomerDialog Image](AngularWorkspace/project/BankAccountApplication/src/HomePahe-UpdateDialog.png)
 
 ### CreateCustomerComponent
 
