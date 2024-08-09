@@ -22,44 +22,94 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
-## Application Overview
+## Components
 
 ### HomeComponent
 
-This component is responsible for displaying a list of customers. It interacts with the `CustomerService` to fetch and display customer data. Users can update or delete customers using this component.
+The `HomeComponent` displays a list of customers in a table format. It provides functionality to update and delete customers through a dialog.
 
-![HomeComponent Image Placeholder](#)
+- **Key Features**:
+  - Fetches and displays customers.
+  - Opens a dialog to update customer details.
+  - Deletes a customer.
 
-### CreateCustomerComponent
-
-This component provides a form for creating new customers. It interacts with the `CustomerService` to submit customer data to the server and navigate to the home page upon successful creation.
-
-![CreateCustomerComponent Image Placeholder](#)
+![HomeComponent Image](path-to-image)
 
 ### UpdateCustomerDialog
 
-This component is used within the `HomeComponent` to open a dialog for updating customer information. It includes a form populated with the customer's existing data and allows users to submit updates.
+The `UpdateCustomerDialog` component is used within a dialog to update customer information. It provides a form with fields for customer details and address.
 
-![UpdateCustomerDialog Image Placeholder](#)
+- **Key Features**:
+  - Displays a form for updating customer information.
+  - Allows cancellation or submission of updates.
+
+![UpdateCustomerDialog Image](path-to-image)
+
+### CreateCustomerComponent
+
+The `CreateCustomerComponent` handles the creation of new customers. It provides a form to input customer details and address, then posts this information to the backend.
+
+- **Key Features**:
+  - Provides a form to input new customer data.
+  - Submits the data to create a new customer.
+
+![CreateCustomerComponent Image](path-to-image)
 
 ### FindByIdComponent
 
-This component allows users to retrieve and display a customer by their ID. It interacts with the server to fetch customer details and displays them in the component.
+The `FindByIdComponent` retrieves and displays customer information based on a given ID.
 
-![FindByIdComponent Image Placeholder](#)
+- **Key Features**:
+  - Retrieves customer information by ID.
+  - Displays the customer data.
+
+![FindByIdComponent Image](path-to-image)
 
 ### CreateAccountComponent
 
-This component provides a form for creating new accounts, such as savings or checking accounts. It interacts with the `AccountService` to submit account data to the server and navigates to the account directory page upon successful creation.
+The `CreateAccountComponent` manages the creation of new accounts. It includes a form to input account details and specifies account type with additional fields for savings or checking accounts.
 
-![CreateAccountComponent Image Placeholder](#)
+- **Key Features**:
+  - Provides a form to input account details.
+  - Allows for the creation of savings or checking accounts with specific fields.
+
+![CreateAccountComponent Image](path-to-image)
 
 ### AccountsdirectoryComponent
 
-This component displays a directory of all accounts. It interacts with the `AccountService` to fetch and display account data, including account IDs, balances, and associated customer names.
+The `AccountsdirectoryComponent` displays a list of all accounts, showing their ID, balance, and associated customer name.
 
-![AccountsdirectoryComponent Image Placeholder](#)
+- **Key Features**:
+  - Displays a table of all accounts.
+  - Allows navigation to create new accounts.
+
+![AccountsdirectoryComponent Image](path-to-image)
+
+## Services
+
+### CustomerService
+
+The `CustomerService` handles HTTP requests related to customer data, including creating, fetching, updating, and deleting customers.
+
+- **Key Methods**:
+  - `post(customerForm: any)`: Create a new customer.
+  - `getCustomerById(id: number)`: Fetch customer by ID.
+  - `getAllCustomers()`: Fetch all customers.
+  - `updateCustomer(updatedCustomer: any)`: Update customer information.
+  - `deleteCustomer(customer: any)`: Delete a customer.
+
+![CustomerService Image](path-to-image)
+
+### AccountService
+
+The `AccountService` manages HTTP requests for account-related operations, including creating and fetching accounts.
+
+- **Key Methods**:
+  - `post(account: any)`: Create a new account.
+  - `getAllAccounts()`: Fetch all accounts.
+
+![AccountService Image](path-to-image)
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
