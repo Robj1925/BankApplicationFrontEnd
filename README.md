@@ -33,7 +33,7 @@ The `HomeComponent` displays a list of customers in a table format. It provides 
   - Opens a dialog to update customer details.
   - Deletes a customer.
 
-![HomeComponent Image]("HomePage.png")
+![HomeComponent Image](HomePage.png)
 
 ### UpdateCustomerDialog
 
