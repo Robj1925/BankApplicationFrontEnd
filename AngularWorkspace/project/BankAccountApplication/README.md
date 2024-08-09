@@ -35,7 +35,7 @@ The `HomeComponent` displays a list of customers in a table format. It provides 
 
 ![HomeComponent Image](AngularWorkspace/project/BankAccountApplication/src/HomePage.png)
 
-![HomeComponent Image](AngularWorkspace/project/BankAccountApplication/src/HomePage-UpdateDialog.png)
+<!-- ![HomeComponent Image](AngularWorkspace/project/BankAccountApplication/src/HomePage-UpdateDialog.png) -->
 
 ### UpdateCustomerDialog
 
@@ -45,7 +45,7 @@ The `UpdateCustomerDialog` component is used within a dialog to update customer 
   - Displays a form for updating customer information.
   - Allows cancellation or submission of updates.
 
-![UpdateCustomerDialog Image](path-to-image)
+![UpdateCustomerDialog Image](AngularWorkspace/project/BankAccountApplication/src/HomePage-UpdateDialog.png)
 
 ### CreateCustomerComponent
 
