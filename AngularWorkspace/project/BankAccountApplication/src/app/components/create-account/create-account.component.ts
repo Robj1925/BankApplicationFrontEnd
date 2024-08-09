@@ -22,8 +22,17 @@ export class CreateAccountComponent {
   }
 
   onCreateAccount(account: { balance: number; accountType: string; customerId: number; interestRate?: number; nextCheckNumber?: number }) {
-    this.accountService.post(account);
-   this.router.navigate(['/home']);
+    this.accountService.post(account).subscribe({
+      next: (account) => {
+        console.table(account);
+        this.router.navigate(['/view-all-accounts']);
+
+      },
+      error: (err) => {
+        console.error('Error creating account:', err);
+      }
+    });
+  // this.router.navigate(['/home']);
 
   }
 }
