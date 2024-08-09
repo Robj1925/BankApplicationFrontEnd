@@ -55,7 +55,7 @@ The `CreateCustomerComponent` handles the creation of new customers. It provides
   - Provides a form to input new customer data.
   - Submits the data to create a new customer.
 
-![CreateCustomerComponent Image](path-to-image)
+![CreateCustomerComponent Image](AngularWorkspace/project/BankAccountApplication/src/CreateCustomerPage.png)
 
 ### FindByIdComponent
 
@@ -65,7 +65,7 @@ The `FindByIdComponent` retrieves and displays customer information based on a g
   - Retrieves customer information by ID.
   - Displays the customer data.
 
-![FindByIdComponent Image](path-to-image)
+![FindByIdComponent Image](AngularWorkspace/project/BankAccountApplication/src/FindByIdPage.png)
 
 ### CreateAccountComponent
 
@@ -75,7 +75,7 @@ The `CreateAccountComponent` manages the creation of new accounts. It includes a
   - Provides a form to input account details.
   - Allows for the creation of savings or checking accounts with specific fields.
 
-![CreateAccountComponent Image](path-to-image)
+![CreateAccountComponent Image](AngularWorkspace/project/BankAccountApplication/src/CreateAccountComponent.png)
 
 ### AccountsdirectoryComponent
 
@@ -85,7 +85,7 @@ The `AccountsdirectoryComponent` displays a list of all accounts, showing their 
   - Displays a table of all accounts.
   - Allows navigation to create new accounts.
 
-![AccountsdirectoryComponent Image](path-to-image)
+<!-- ![AccountsdirectoryComponent Image](path-to-image) -->
 
 ## Services
 
@@ -100,7 +100,7 @@ The `CustomerService` handles HTTP requests related to customer data, including 
   - `updateCustomer(updatedCustomer: any)`: Update customer information.
   - `deleteCustomer(customer: any)`: Delete a customer.
 
-![CustomerService Image](path-to-image)
+<!-- ![CustomerService Image](path-to-image) -->
 
 ### AccountService
 
@@ -110,7 +110,7 @@ The `AccountService` manages HTTP requests for account-related operations, inclu
   - `post(account: any)`: Create a new account.
   - `getAllAccounts()`: Fetch all accounts.
 
-![AccountService Image](path-to-image)
+<!-- ![AccountService Image](path-to-image) -->
 
 ## Further help
 
