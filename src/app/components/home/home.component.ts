@@ -62,15 +62,9 @@ export class HomeComponent implements OnInit {
       });
   }
   deleteCustomer(customer: any): void { //we take in a customer obj
-    this.customerService.deleteCustomer(`http://localhost:8084/customer/${customer.customerId}`) //just use the customerid to delete it
-      .subscribe({
-        next: (res) => {
-          console.table(res);
-          this.displayCustomers(); // "refresh" the table after update
-        },
-        error: (err) => {
-          console.error('Error occurred while deleting customer:', err);
-        }
+    this.customerService.deleteCustomer(customer) //just use the customerid to delete it
+      .subscribe(() =>{
+        this.displayCustomers();
       });
   }
 }

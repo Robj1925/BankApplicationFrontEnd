@@ -14,6 +14,8 @@ import { CreateCustomerComponent } from './components/create-customer/create-cus
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { FindByIdComponent } from './components/find-by-id/find-by-id.component';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
+// import { provideHttpClientTesting } from '@angular/common/http/testing';
+
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
@@ -36,11 +38,14 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatMenuModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    
   ],
   providers: [
     provideClientHydration(),
     provideHttpClient()
+   // provideHttpClientTesting(),
+
   ],
   bootstrap: [AppComponent]
 })

@@ -14,7 +14,7 @@ export class AccountService {
       .pipe(
         catchError((error) => {
           console.error("Error occurred: ", error);
-          alert("Could create customer account!");
+          alert("Could create customer account. Please try again!");
           return error;
         })
       );
