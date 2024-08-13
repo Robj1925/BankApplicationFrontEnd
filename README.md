@@ -65,7 +65,7 @@ The `FindByIdComponent` retrieves and displays customer information based on a g
   - Retrieves customer information by ID.
   - Displays the customer data.
 
-![FindByIdComponent Image](AngularWorkspace/project/BankAccountApplication/src/FindByIdPage.png)
+![FindByIdComponent Image](./FindByIdPage.png)
 
 ### CreateAccountComponent
 
