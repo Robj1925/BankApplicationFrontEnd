@@ -55,7 +55,7 @@ The `CreateCustomerComponent` handles the creation of new customers. It provides
   - Provides a form to input new customer data.
   - Submits the data to create a new customer.
 
-![CreateCustomerComponent Image](AngularWorkspace/project/BankAccountApplication/src/CreateCustomerPage.png)
+![CreateCustomerComponent Image](BankAccountApplicationFrontEnd/CreateCustomerPage.png)
 
 ### FindByIdComponent
 
