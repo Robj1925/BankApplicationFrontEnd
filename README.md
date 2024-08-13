@@ -33,7 +33,7 @@ The `HomeComponent` displays a list of customers in a table format. It provides 
   - Opens a dialog to update customer details.
   - Deletes a customer.
 
-![HomeComponent Image](AngularWorkspace/project/BankAccountApplication/src/HomePage.png)
+![HomeComponent Image](./HomePage.png)
 
 <!-- ![HomeComponent Image](AngularWorkspace/project/BankAccountApplication/src/HomePage-UpdateDialog.png) -->
 
@@ -45,7 +45,7 @@ The `UpdateCustomerDialog` component is used within a dialog to update customer 
   - Displays a form for updating customer information.
   - Allows cancellation or submission of updates.
 
-![UpdateCustomerDialog Image](AngularWorkspace/project/BankAccountApplication/src/HomePahe-UpdateDialog.png)
+![UpdateCustomerDialog Image](./HomePahe-UpdateDialog.png)
 
 ### CreateCustomerComponent
 
@@ -75,7 +75,7 @@ The `CreateAccountComponent` manages the creation of new accounts. It includes a
   - Provides a form to input account details.
   - Allows for the creation of savings or checking accounts with specific fields.
 
-![CreateAccountComponent Image](AngularWorkspace/project/BankAccountApplication/src/CreateAccountComponent.png)
+![CreateAccountComponent Image](./CreateAccountComponent.png)
 
 ### AccountsdirectoryComponent
 
